@@ -1,0 +1,28 @@
+<!--	Launch file for laser2costmap	-->
+
+<launch>
+
+<node name="reward_generator" pkg="reward_generator" type="reward_generator" args="" output="screen">
+    <remap from="~/laser" to="/front/scan"/>
+    <remap from="~/odom" to="/pose_gt"/>
+    <remap from="~/done" to="/agent/is_done"/>
+    <remap from="~/refresh" to="/server/episode_manager"/>
+    <!--<remap from="doublemap" to="doublemap"/>-->
+    <!--<remap from="cost_map" to="cost_map"/>-->
+    
+    <param name="dist_to_shore" type="double" value="10.0" />
+	<param name="safe_to_shore" type="double" value="4.0" />
+	<param name="laser_frame" type="string" value="front_laser" />
+	<param name="local_grid_front_size" type="double" value="10.0" />
+	<param name="local_grid_rear_size" type="double" value="2.0" />
+	<param name="local_grid_side_size" type="double" value="12" />
+	<param name="local_grid_res" type="double" value="0.10" />
+	<param name="safety_area_cost" type="int" value="500" />
+	<param name="max_gap" type="double" value="0.5" />
+	<param name="publish_occupancy_grid" type="bool" value="true" />
+	<param name="blur_kernel_size" type="double" value="1.5" />
+	
+</node>
+
+</launch>
+
